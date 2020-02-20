@@ -46,10 +46,10 @@ app.use(session({
 app.use(flash());
 
 
-app.use(fileUpload({
-  useTempFiles: true,
-  // tempFileDir: '/tmp/'
-}));
+// app.use(fileUpload({
+//   useTempFiles: true,
+//   // tempFileDir: '/tmp/'
+// }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

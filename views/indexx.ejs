@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='/stylesheets/stylee.css' />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
     <title>Document</title>
 </head>
 <body>
     <div class="frame">
         <form action="/upload" method="post" enctype="multipart/form-data">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Denomination</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">Niara</option>
+                  <option value="2">Cefa</option>
+                  <option value="3">yen</option>
+                </select>
+              </div>
         <div class="center">
             <div class="title">
                 <h1>click the below icon to upload</h1>
@@ -26,7 +39,7 @@
             </div>
             
             <button type="submit" class="btn" onclick="getValue()">Upload image</button>
-            <h1> <%- Error %> </h1>
+            <h1> <%- herror %> </h1>
             <!-- <h1> <%#- Success %> </h1> -->
             <!-- <h1> <%#- dataSaved %> </h1> -->
 
@@ -59,11 +72,11 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
-       if( "<%-Success%>" ){
+    <!-- <script>
+       if( "<%#-Success%>" ){
 			swal({
 				icon: "success",
-				text: "<%=Success%>",
+				text: "<%#=Success%>",
 			});
         }
         
@@ -73,7 +86,7 @@
 		// 		text: "<%#=dataSaved%>",
 		// 	});
 		// }
-    </script>
+    </script> -->
 
 
 </body>

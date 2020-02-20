@@ -3,9 +3,9 @@ let Schema = mongoose.Schema;
 
 let imageSchema = new Schema({
     name: { type: String },
-    imgLink: { type: String },
-    publicid: { type: String },
-    image: {type: String},
+    email: {type: String},
+    currency: {type: String},
+    images: {type: Array},
     createdOn: { type: Date, default: Date.now }
 })
 
