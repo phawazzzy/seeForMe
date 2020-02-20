@@ -14,7 +14,9 @@ const fs = require('fs')
 router.get('/', function (req, res, next) {
   let loading = req.flash('uploading')
   let success = req.flash('success')
-  res.render('index', { title: 'Express', loading, success });
+  let imageError = req.flash('imageError')
+  let saveError = req.flash('saveError')
+  res.render('index', { title: 'Express', loading, success, imageError, saveError });
 });
 
 router.post('/currency', upload.array('images', 5), async (req, res, next) => {
@@ -44,7 +46,7 @@ router.post('/currency', upload.array('images', 5), async (req, res, next) => {
       console.log(urls)
       contribution.images = urls
     } catch (error) {
-      console.log('some error occured, your images were not uploaded')
+      req.flash('imageError', `${error} occured during your uploads, please reload the page`)
       console.log(error)
 
     }
@@ -59,6 +61,7 @@ router.post('/currency', upload.array('images', 5), async (req, res, next) => {
 
   })
   .catch(err => {
+    req.flash('saveError', `${err} occured while trying to save your contribution, please try again`)
     console.log(err)
   })
 
@@ -66,46 +69,7 @@ router.post('/currency', upload.array('images', 5), async (req, res, next) => {
 })
 
 
-router.get('/index', function (req, res, next) {
-  // console.log(req.files.image)
-  let Success = req.flash('Success')
-  let Error = req.flash('Erroor')
-  // let dataSaved = req.flash('dataSaved')
-  res.render('indexx', { title: 'image source', Success, Error })
-})
 
-// router.post('/upload', async (req, res, next) => {
-//   let files = req.files.image;
-//   console.log(files)
-//   const upload = await cloudinary.uploader.upload(files.tempFilePath, (err, result) => {
-//     if(err) {
-//       req.flash('Error', 'An error occured when during picture upload, please refresh and try again')
-//       res.redirect('/index')
-//     }
-//     return result
-//   })
-
-
-//   let imageDetails = {
-//     name: files.name,
-//     type: req.body.type,
-//     imgLink: upload.secure_url,
-//     publicid: upload.public_id
-//   }
-//   console.log(imageDetails)
-//   try {
-//     await Images.create(imageDetails).then((res) => {
-//       if(res){
-//         // req.flash('dataSaved', 'your file has been saved succesfully')
-//         req.flash('Success', 'picture successfully uploaded....Thanks you for your contribution')
-
-//       }
-//     })
-//   } catch (error) {
-//     throw error
-//   } 
-//   res.redirect('/index' )
-// })
 
 
 module.exports = router;

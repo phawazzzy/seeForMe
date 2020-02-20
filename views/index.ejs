@@ -75,6 +75,13 @@
     if ("<%-success%>") {
       swal("Thank you!", "<%=success%>!", "success");
     }
+
+    if( "<%-saveError%>") {
+      swal('Ooopsss', "<%=saveError%>!", "error")
+    }
+    if( "<%-imageError%>") {
+      swal('Ooopsss', "<%=imageError%>!", "error")
+    }
   </script>
 
 </body>

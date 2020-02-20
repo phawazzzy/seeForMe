@@ -18,9 +18,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var db_uri = "mongodb://localhost:27017/seeForMe" ;
+// var db_uri = "mongodb://localhost:27017/seeForMe";
+const db_uri = process.env.db_uri
 
-mongoose.connect(db_uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true  }).then(console.log("database connected")).catch(err => console.log(err));
+mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true , useUnifiedTopology: true }).then(console.log("database connected")).catch(err => console.log(err));
 
 
 // view engine setup
