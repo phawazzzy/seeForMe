@@ -91,3 +91,91 @@
 
 </body>
 </html>
+
+
+<!doctype html>
+<html>
+
+<head>
+  <title>Image crowd sourcing</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+ 
+</head>
+
+<body>
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <h1>CONTIBUTE TO OPEN SOURCE BY SENDING US IMAGES OF YOUR MONEY IN ORDER TO TRAIN OUR MODELS</h1>
+
+    <!-- OUR FORM -->
+    <form id="form" action="/currency" method="POST" enctype="multipart/form-data">
+      <div id="superhero-group" class="form-group">
+        <label for="superheroAlias">Name</label>
+        <input type="text" class="form-control" name="name" placeholder=" please let us know your name" required>
+      </div>
+
+      <div id="email-group" class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email"
+          placeholder="please can we have a your mail address E.g johnDoe@gmail.com">
+        <!-- errors will go here -->
+      </div>
+
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">currency</label>
+        </div>
+        <select name="currency" class="custom-select" id="inputGroupSelect01" required>
+          <option selected>Choose...</option>
+          <option value="Nigerian Naira">Nigerian Naira</option>
+          <option value="Rand">Rand</option>
+          <option value="kenyan shilling">Kenyan shilling</option>
+          <option value="uganda shilling">Uganda shilling</option>
+          <option value="egyptian pounds">Egyptian pounds</option>
+        </select>
+      </div>
+
+      <!-- NAME -->
+      <div id="images" class="form-group">
+        <label for="images">Image</label>
+        <input type="file" class="form-control" name="images" placeholder="hey buddy, i can only take 5 images at a time"
+          multiple>
+        <!-- er rors will go here -->
+      </div>
+
+      <!-- EMAIL -->
+
+      <!-- SUPERHERO ALIAS -->
+
+
+      <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+
+    </form>
+
+
+  </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+  <script>
+    if ("<%#-success%>") {
+      swal("Thank you!", "<%#=success%>!", "success");
+    }
+
+    if( "<%#-saveError%>") {
+      swal('Ooopsss', "<%#=saveError%>!", "error")
+    }
+    if( "<%#-imageError%>") {
+      swal('Ooopsss', "<%#=imageError%>!", "error")
+    }
+  </script>
+
+</body>
+
+</html>

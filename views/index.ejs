@@ -1,89 +1,69 @@
 <!-- index.html -->
 
-<!doctype html>
-<html>
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <title>Image crowd sourcing</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
-  <!-- <script src="/javascripts/index.js"></script> load our javascript file -->
-  <!-- <script src="/javascripts/index.js"></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSCA - CURRENCY IMAGES FOR MODELS</title>
+    <!-- Tailwind Cdn Link -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="col-sm-6 col-sm-offset-3">
+    <div class="container w-full md:w-1/2 h-auto my-10 mx-auto px-8 py-8 shadow-md rounded">
+        <h1 class="font-sans text-center text-lg py-8 font-bold text-gray-600">CONTRIBUTE TO OPEN SOURCE BY SENDING US
+            IMAGES OF YOUR CURRENCY IN ORDER TO TRAIN OUR MODEL</h1>
 
-    <h1>CONTIBUTE TO OPEN SOURCE BY SENDING US IMAGES OF YOUR MONEY IN ORDER TO TRAIN OUR MODELS</h1>
-
-    <!-- OUR FORM -->
-    <form id="form" action="/currency" method="POST" enctype="multipart/form-data">
-      <div id="superhero-group" class="form-group">
-        <label for="superheroAlias">Name</label>
-        <input type="text" class="form-control" name="name" placeholder=" please let us know your name" required>
-      </div>
-
-      <div id="email-group" class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" name="email"
-          placeholder="please can we have a your mail address E.g johnDoe@gmail.com">
-        <!-- errors will go here -->
-      </div>
-
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">currency</label>
-        </div>
-        <select name="currency" class="custom-select" id="inputGroupSelect01" required>
-          <option selected>Choose...</option>
-          <option value="Nigerian Naira">Nigerian Naira</option>
-          <option value="Rand">Rand</option>
-          <option value="kenyan shilling">Kenyan shilling</option>
-          <option value="uganda shilling">Uganda shilling</option>
-          <option value="egyptian pounds">Egyptian pounds</option>
-        </select>
-      </div>
-
-      <!-- NAME -->
-      <div id="images" class="form-group">
-        <label for="images">Image</label>
-        <input type="file" class="form-control" name="images" placeholder="hey buddy, i can only take 5 images at a time"
-          multiple>
-        <!-- er rors will go here -->
-      </div>
-
-      <!-- EMAIL -->
-
-      <!-- SUPERHERO ALIAS -->
+        <form action="/currency" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+                <label for="fullname" class="block mb-2 text-gray-500 font-bold">Full Name</label>
+                <input type="text" name="name" placeholder="Please enter your full name"
+                    class="px-2 py-2 w-full  appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300" required>
+            </div>
+            <div class="form-group mb-4">
+                <label for="email" class="block mb-2 text-gray-500 font-bold">Email Address</label>
+                <input type="email" name="email" placeholder="Please enter email address"
+                    class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300">
+            </div>
+            <div class="form-group mb-4">
+                <label for="currency" class="block mb-2 text-gray-500 font-bold">Select Currency</label>
+                <select name="currency" class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300" required>
+                  <option value="Nigerian Naira">Nigerian Naira</option>
+                  <option value="Rand">Rand</option>
+                  <option value="kenyan shilling">Kenyan shilling</option>
+                  <option value="uganda shilling">Uganda shilling</option>
+                  <option value="egyptian pounds">Egyptian pounds</option>
+                </select>
+            </div>
+            <div class="form-group mb-4">
+                <label for="image" class="block mb-2 text-gray-500 font-bold">Select Image To Upload</label>
+                <input type="file" name="images"
+                    class="px-2 py-2 w-full bg-gray-200 appearance-none border-2 border-gray-200 rounded" multiple required>
+            </div>
+            <div class="form-group py-8">
+                <input type="submit" value="SUBMIT" class="px-2 py-2 w-full bg-teal-500 rounded text-white font-bold hover:bg-teal-700">
+            </div>
+        </form>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-      <button type="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+<script>
+  if ("<%-success%>") {
+    swal("Thank you!", "<%=success%>!", "success");
+  }
 
-    </form>
-
-
-  </div>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-  <script>
-    if ("<%-success%>") {
-      swal("Thank you!", "<%=success%>!", "success");
-    }
-
-    if( "<%-saveError%>") {
-      swal('Ooopsss', "<%=saveError%>!", "error")
-    }
-    if( "<%-imageError%>") {
-      swal('Ooopsss', "<%=imageError%>!", "error")
-    }
-  </script>
-
+  if( "<%-saveError%>") {
+    swal('Ooopsss', "<%=saveError%>!", "error")
+  }
+  if( "<%-imageError%>") {
+    swal('Ooopsss', "<%=imageError%>!", "error")
+  }
+</script>
 </body>
 
 </html>
