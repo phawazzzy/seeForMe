@@ -9,7 +9,6 @@ const cloudinary = require('../config/cloudinary');
 const fs = require('fs')
 
 
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
   let loading = req.flash('uploading')

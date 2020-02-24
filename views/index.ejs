@@ -24,16 +24,19 @@
             <div class="form-group mb-4">
                 <label for="email" class="block mb-2 text-gray-500 font-bold">Email Address</label>
                 <input type="email" name="email" placeholder="Please enter email address"
-                    class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300">
+                    class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300" required>
             </div>
             <div class="form-group mb-4">
                 <label for="currency" class="block mb-2 text-gray-500 font-bold">Select Currency</label>
-                <select name="currency" class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300" required>
-                  <option value="Nigerian Naira">Nigerian Naira</option>
+                <select name="currency" id="select" class="px-2 py-2 w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 focus:outline-none focus:bg-white focus:border-gray-300" required>
+                  <!-- <option value="Nigerian Naira">Nigerian Naira</option>
                   <option value="Rand">Rand</option>
                   <option value="kenyan shilling">Kenyan shilling</option>
                   <option value="uganda shilling">Uganda shilling</option>
-                  <option value="egyptian pounds">Egyptian pounds</option>
+                  <option value="egyptian pounds">Egyptian pounds</option> -->
+
+
+
                 </select>
             </div>
             <div class="form-group mb-4">
@@ -60,6 +63,26 @@
   if( "<%-imageError%>") {
     swal('Ooopsss', "<%=imageError%>!", "error")
   }
+
+
+  // ALL CURRENCIES
+
+let selectElem = document.getElementById("select");
+
+async function getCurrencies() {
+  let apiCall = await fetch("https://api.myjson.com/bins/14xvxc");
+  let apiRes = await apiCall.json();
+
+  let currency = Object.entries(apiRes);
+
+  currency.forEach(data => {
+    let option = document.createElement("option");
+    option.text = data[1];
+    // option.value = data[0];
+    selectElem.add(option);
+  });
+}
+getCurrencies();
 </script>
 </body>
 
